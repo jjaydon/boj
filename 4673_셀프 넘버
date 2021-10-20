@@ -1,0 +1,28 @@
+import java.io.IOException;
+
+public class Main {
+    
+	public static void main(String[] args) throws IOException {
+		boolean[] selfnumber = new boolean[10000];
+        
+        for (int i = 0; i < 10000; i++) {
+            int dn = getdn(i+1);
+            if (dn <= 10000)
+                selfnumber[dn-1] = true;
+        }
+        for (int i = 0; i < 10000; i++)
+            if (!selfnumber[i])
+                System.out.println(i+1);
+	}
+    
+    private static int getdn(int num) {
+        int not_selfnumber = num;
+        
+        while (num > 0) {
+            not_selfnumber += num % 10;
+            num /= 10;
+        }
+        
+        return not_selfnumber;
+    }
+}
